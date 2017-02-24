@@ -50,12 +50,12 @@
 		$parent.children().removeClass( flexboxItemIsWrappedClass ).each( function() {
 
 			if ( !previous_top ) {
-				previous_top = $( this ).offset().top;
-				previous_height = $( this ).outerHeight( true );
+				previous_top = parseInt( $( this ).offset().top, 10 );
+				previous_height = parseInt( $( this ).outerHeight( true ), 10 );
 			}
 
-			var top = $( this ).offset().top;
-			var height = $( this ).outerHeight( true );
+			var top = parseInt( $( this ).offset().top, 10 );
+			var height = parseInt( $( this ).outerHeight( true ), 10 );
 			var isWrapped = top >= previous_top + previous_height;
 			$( this ).toggleClass( flexboxItemIsWrappedClass, isWrapped );
 

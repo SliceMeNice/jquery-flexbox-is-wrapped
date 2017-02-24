@@ -2,6 +2,10 @@
 
 ## Release History
 
+__1.1.1__
+
+  * Added conversion of top and height to full integer values.
+
 __1.1.0__
 
   * Remove all added class names before rechecking for wrapped items.
