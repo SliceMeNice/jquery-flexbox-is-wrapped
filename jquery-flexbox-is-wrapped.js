@@ -6,6 +6,9 @@
  */
 ( function ( $, window ) {
 
+	var flexboxIsWrappedClass = 'js-flexbox-isWrapped';
+	var flexboxItemIsWrappedClass = 'js-flexboxItem-isWrapped';
+
 	$( document ).ready( function() {
 
 		initialize();
@@ -38,28 +41,34 @@
 	function checkFlexWrapped() {
 		var $parent = $( this );
 
+		$parent.removeClass( flexboxIsWrappedClass );
+
 		var previous_top = undefined;
+		var previous_height = undefined;
 		var isAnyItemWrapped = false;
 
-		$parent.children().each( function() {
+		$parent.children().removeClass( flexboxItemIsWrappedClass ).each( function() {
 
 			if ( !previous_top ) {
 				previous_top = $( this ).offset().top;
+				previous_height = $( this ).outerHeight( true );
 			}
 
 			var top = $( this ).offset().top;
-			var isWrapped = top !== previous_top;
-			$( this ).toggleClass( 'js-flexboxItem-isWrapped', isWrapped );
+			var height = $( this ).outerHeight( true );
+			var isWrapped = top >= previous_top + previous_height;
+			$( this ).toggleClass( flexboxItemIsWrappedClass, isWrapped );
 
 			if ( isWrapped ) {
 				isAnyItemWrapped = true;
 			}
 
 			previous_top = top;
+			previous_height = height;
 
 		} );
 
-		$parent.toggleClass( 'js-flexbox-isWrapped', isAnyItemWrapped );
+		$parent.toggleClass( flexboxIsWrappedClass, isAnyItemWrapped );
 	}
 
 } )( jQuery, window );
