@@ -2,6 +2,10 @@
 
 ## Release History
 
+__1.1.2__
+
+  * Changed isWrapped check to also take into account the top margin of the flexbox item.
+
 __1.1.1__
 
   * Added conversion of top and height to full integer values.
