@@ -2,6 +2,9 @@
 
 ## Release History
 
+__1.1.3__
+  * Consider rounding errors when checking for isWrapped.
+
 __1.1.2__
 
   * Changed isWrapped check to also take into account the top margin of the flexbox item.

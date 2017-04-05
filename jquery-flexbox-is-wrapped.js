@@ -57,7 +57,8 @@
 			var top = parseInt( $( this ).offset().top, 10 );
 			var marginTop = parseInt( $( this ).css( 'margin-top' ), 10 );
 			var height = parseInt( $( this ).outerHeight( true ), 10 );
-			var isWrapped = top - marginTop >= previous_top + previous_height;
+			var epsilon = Math.min( previous_height, 2 );
+			var isWrapped = top - marginTop >= previous_top + previous_height - epsilon;
 			$( this ).toggleClass( flexboxItemIsWrappedClass, isWrapped );
 
 			if ( isWrapped ) {
